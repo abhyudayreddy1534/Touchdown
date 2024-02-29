@@ -9,10 +9,30 @@ import SwiftUI
 
 struct CategoryGridView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.horizontal,showsIndicators: false) {
+            LazyHGrid(rows: gridLayout,alignment: .center, spacing: columnSpacing, content: {
+                
+                Section(content: {
+                    ForEach(categories) { category in
+                        CategoryItemView(category: category)
+                    }
+                }) {
+                    SectionView(rotateClockwise: false)
+                } footer: {
+                    SectionView(rotateClockwise: true)
+                }
+
+            })
+            .frame(height: 150)
+            .padding(.horizontal, 15)
+            .padding(.vertical, 10)
+        }
     }
 }
 
 #Preview {
     CategoryGridView()
+        .previewLayout(.sizeThatFits)
+        .padding()
+        .background(colorBackground)
 }

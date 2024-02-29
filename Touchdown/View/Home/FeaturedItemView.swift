@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct FeaturedItemView: View {
+    
+    let player: Player
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(player.image)
+            .resizable().scaledToFit()
+            .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 
 #Preview {
-    FeaturedItemView()
+    FeaturedItemView(player: players[0])
+        .previewLayout(.sizeThatFits)
+        .padding()
+        .background(colorBackground)
 }

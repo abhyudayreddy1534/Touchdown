@@ -9,10 +9,19 @@ import SwiftUI
 
 struct FeaturebTabView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ForEach(players) { player in
+                FeaturedItemView(player: player)
+                    .padding(.top, 10)
+                    .padding(.horizontal, 15)
+            }
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
 
 #Preview {
     FeaturebTabView()
+        .previewLayout(.sizeThatFits)
+        .background(colorBackground)
 }

@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct CustomShape: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CustomShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect,
+                                byRoundingCorners: [.topRight, .topLeft],
+                                cornerRadii: CGSize(width: 35, height: 35))
+        
+        return Path(path.cgPath)
     }
 }
 
 #Preview {
     CustomShape()
+        .previewLayout(.sizeThatFits)
+//        .padding()
 }
